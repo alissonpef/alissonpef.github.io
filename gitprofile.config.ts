@@ -1,27 +1,26 @@
 const CONFIG = {
   github: {
-    username: 'alissonpef', // Seu usuário real
+    username: 'alissonpef',
   },
-  base: '/', // Configurado para alissonpef.github.io
+  base: '/',
   projects: {
     github: {
       display: true,
       header: 'Github Projects',
-      mode: 'manual', // Mudei para manual para garantir que seus melhores projetos apareçam primeiro
+      mode: 'automatic',
       automatic: {
         sortBy: 'stars',
-        limit: 8,
+        limit: 1000,
         exclude: {
           forks: false,
-          projects: [],
+          projects: [
+            'alissonpef/alissonpef.github.io',
+            'alissonpef/alissonpef',
+          ],
         },
       },
       manual: {
-        // Seus projetos destaque baseados no README
-        projects: [
-            'alissonpef/Book-End-API', 
-            'alissonpef/Flask-PDF-Protector'
-        ],
+        projects: [],
       },
     },
     external: {
@@ -40,7 +39,7 @@ const CONFIG = {
     mastodon: '',
     researchGate: '',
     facebook: '',
-    instagram: '',
+    instagram: 'alissonpef',
     reddit: '',
     threads: '',
     youtube: '',
@@ -57,7 +56,8 @@ const CONFIG = {
     email: 'alissonpef@gmail.com',
   },
   resume: {
-    fileUrl: '',
+    fileUrl:
+      'https://drive.google.com/file/d/1ny99c2hPwTGrLy_xW7WNgE9A_5GaI6JQ/view?usp=sharing',
   },
   skills: [
     'Node.js',
@@ -71,8 +71,6 @@ const CONFIG = {
     'Docker',
     'Git',
     'Jest',
-    'Linux',
-    'Microservices',
   ],
   experiences: [
     {
@@ -104,37 +102,13 @@ const CONFIG = {
       year: '2024.2',
       link: '',
     },
-    {
-      name: 'The Complete Full-Stack Web Development Bootcamp',
-      body: 'Udemy',
-      year: '2025',
-      link: '',
-    },
-    {
-      name: 'Formação Completa em Node.js',
-      body: 'OneBitCode',
-      year: '2025',
-      link: '',
-    },
-    {
-      name: 'Banco de Dados com SQL e PostgreSQL',
-      body: 'OneBitCode',
-      year: '2025',
-      link: '',
-    },
-    {
-      name: 'Python do Zero ao Avançado',
-      body: 'Udemy',
-      year: '2024',
-      link: '',
-    },
   ],
   educations: [
     {
       institution: 'Universidade Federal de Santa Catarina (UFSC)',
       degree: 'Bacharelado, Engenharia de Computação',
       from: '2022',
-      to: '2026 (Estimado)',
+      to: '2026.2 (Estimado)',
     },
     {
       institution: 'Universidade Federal de Santa Catarina (UFSC)',
@@ -143,7 +117,7 @@ const CONFIG = {
       to: '2022',
     },
   ],
-  publications: [], 
+  publications: [],
   blog: {
     source: 'dev',
     username: '',
@@ -154,18 +128,12 @@ const CONFIG = {
   },
   hotjar: { id: '', snippetVersion: 6 },
   themeConfig: {
-    defaultTheme: 'dracula', // Alterado para combinar com seu README
+    defaultTheme: 'dark',
 
     disableSwitch: false,
     respectPrefersColorScheme: false,
     displayAvatarRing: true,
-    themes: [
-      'light',
-      'dark',
-      'dracula', // Tema de código escuro
-      'procyon', // Tema espacial/escuro
-      'night',
-    ],
+    themes: ['light', 'dark', 'dracula', 'procyon', 'night'],
   },
   footer: `Made with <a 
       class="text-primary" href="https://github.com/alissonpef/alissonpef.github.io"
