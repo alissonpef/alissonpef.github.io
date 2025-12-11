@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { AiOutlineFork, AiOutlineStar, AiOutlineGithub } from 'react-icons/ai';
 import { MdInsertLink } from 'react-icons/md';
 import { ga, getLanguageColor, skeleton } from '../../utils';
@@ -17,9 +17,21 @@ const GithubProjectCard = ({
   limit: number;
   googleAnalyticsId?: string;
 }) => {
+  const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+
   if (!loading && githubProjects.length === 0) {
     return;
   }
+
+  const languages = [
+    ...new Set(
+      githubProjects.map((project) => project.language).filter(Boolean),
+    ),
+  ];
+
+  const filteredProjects = selectedLanguage
+    ? githubProjects.filter((project) => project.language === selectedLanguage)
+    : githubProjects;
 
   const renderSkeleton = () => {
     const array = [];
@@ -72,7 +84,7 @@ const GithubProjectCard = ({
   };
 
   const renderProjects = () => {
-    return githubProjects.map((item, index) => (
+    return filteredProjects.map((item, index) => (
       <a
         className="card shadow-md card-sm bg-base-100 cursor-pointer"
         href={item.html_url}
@@ -162,6 +174,39 @@ const GithubProjectCard = ({
                 </div>
               </div>
             </div>
+
+            {/* Language Filter */}
+            {!loading && languages.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-6">
+                <button
+                  onClick={() => setSelectedLanguage(null)}
+                  className={`btn btn-xs sm:btn-sm rounded-full transition-all duration-300 ${
+                    selectedLanguage === null
+                      ? 'btn-primary shadow-lg scale-105'
+                      : 'btn-ghost bg-base-100 hover:bg-base-300'
+                  }`}
+                >
+                  All
+                </button>
+                {languages.map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => setSelectedLanguage(lang)}
+                    className={`btn btn-xs sm:btn-sm rounded-full transition-all duration-300 ${
+                      selectedLanguage === lang
+                        ? 'btn-primary shadow-lg scale-105'
+                        : 'btn-ghost bg-base-100 hover:bg-base-300'
+                    }`}
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full mr-2"
+                      style={{ backgroundColor: getLanguageColor(lang) }}
+                    />
+                    {lang}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
