@@ -23,11 +23,12 @@ const GithubProjectCard = ({
     return;
   }
 
-  const languages = [
-    ...new Set(
-      githubProjects.map((project) => project.language).filter(Boolean),
-    ),
+    const languages = [
+    ...new Set(githubProjects.map((project) => project.language).filter(Boolean)),
   ];
+
+  const getLanguageCount = (lang: string) =>
+    githubProjects.filter((project) => project.language === lang).length;
 
   const filteredProjects = selectedLanguage
     ? githubProjects.filter((project) => project.language === selectedLanguage)
@@ -203,6 +204,9 @@ const GithubProjectCard = ({
                       style={{ backgroundColor: getLanguageColor(lang) }}
                     />
                     {lang}
+                    <span className="ml-1.5 opacity-60 text-xs">
+                      ({getLanguageCount(lang)})
+                    </span>
                   </button>
                 ))}
               </div>
