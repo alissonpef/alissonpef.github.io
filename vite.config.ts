@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import CONFIG from './gitprofile.config';
+import CONFIG, { CONFIG_PTBR } from './gitprofile.config';
 import { createHtmlPlugin } from 'vite-plugin-html';
+
 export default defineConfig({
   base: CONFIG.base || '/',
   plugins: [
@@ -52,5 +53,6 @@ export default defineConfig({
   ],
   define: {
     CONFIG: CONFIG,
+    CONFIG_PTBR: CONFIG_PTBR,
   },
 });

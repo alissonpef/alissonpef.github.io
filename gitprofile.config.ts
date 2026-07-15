@@ -158,4 +158,166 @@ const CONFIG = {
   footer: `Made with ❤️ by <b>Alisson Pereira</b>`,
   enablePWA: true,
 };
+
+export const CONFIG_PTBR = {
+  github: {
+    username: 'alissonpef',
+  },
+  base: '/',
+  projects: {
+    github: {
+      display: true,
+      header: 'Projetos do Github',
+      mode: 'automatic',
+      automatic: {
+        sortBy: 'stars',
+        limit: 1000,
+        exclude: {
+          forks: false,
+          projects: [
+            'alissonpef/alissonpef.github.io',
+            'alissonpef/alissonpef',
+            'alissonpef/Curso.dev',
+            'alissonpef/Backend_OneBitCode',
+            'alissonpef/JavaScript_Rocketseat',
+            'alissonpef/Python_OneBitCode',
+            'alissonpef/Fullstack_Rocketseat',
+          ],
+        },
+      },
+      manual: {
+        projects: [],
+      },
+    },
+    external: {
+      header: 'Meus Projetos',
+      projects: [],
+    },
+  },
+  seo: {
+    title: 'Portfólio de Alisson Pereira Ferreira',
+    description:
+      'Engenheiro de IA & Backend | Visão Computacional | Estudante de Engenharia de Computação na UFSC',
+    imageURL: '/logo512.png',
+  },
+  social: {
+    linkedin: 'alisson-pereira-ferreira',
+    x: '',
+    mastodon: '',
+    researchGate: '',
+    facebook: '',
+    instagram: 'alissonpef',
+    reddit: '',
+    threads: '',
+    youtube: '',
+    udemy: '',
+    dribbble: '',
+    behance: '',
+    medium: '',
+    dev: '',
+    stackoverflow: '',
+    discord: '',
+    telegram: '',
+    website: 'https://alissonpef.github.io/',
+    phone: '',
+    email: 'alissonpef@gmail.com',
+  },
+  resume: {
+    fileUrl: '/curriculo.pdf',
+  },
+  skills: [
+    'Python',
+    'TypeScript',
+    'JavaScript',
+    'PyTorch',
+    'YOLO',
+    'Langchain',
+    'RAG',
+    'Node.js',
+    'Express.js',
+    'Flask',
+    'FastAPI',
+    'Prisma',
+    'PostgreSQL',
+    'Redis',
+    'ChromaDB',
+    'Qdrant',
+    'Docker',
+    'Git',
+    'GitHub',
+  ],
+  experiences: [
+    {
+      company: 'Global Drones',
+      position: 'Engenheiro de IA & Visão Computacional',
+      from: 'Maio 2026',
+      to: 'Presente',
+      companyLink: 'https://globaldrones.com.br/',
+    },
+    {
+      company: 'Global Drones',
+      position: 'Estagiário de Backend & IA',
+      from: 'Setembro 2025',
+      to: 'Maio 2026',
+      companyLink: 'https://globaldrones.com.br/',
+    },
+    {
+      company: 'Quizlet',
+      position: 'Contribuinte de Conteúdo (Freelancer)',
+      from: 'Junho 2024',
+      to: 'Julho 2025',
+      companyLink: 'https://quizlet.com',
+    },
+    {
+      company: 'LabTeC - UFSC',
+      position: 'Estagiário de Pesquisa',
+      from: 'Fevereiro 2023',
+      to: 'Junho 2024',
+      companyLink: '',
+    },
+    {
+      company: 'ENEjr',
+      position: 'Analista de Marketing',
+      from: 'Abril 2022',
+      to: 'Agosto 2022',
+      companyLink: '',
+    },
+  ],
+  certifications: [
+    {
+      name: 'Prêmio de Mérito Estudantil',
+      body: 'Universidade Federal de Santa Catarina (UFSC) - Melhor desempenho acadêmico',
+      year: '2024.2',
+      link: '',
+    },
+  ],
+  educations: [
+    {
+      institution: 'Universidade Federal de Santa Catarina (UFSC)',
+      degree: 'Bacharelado em Engenharia de Computação',
+      from: '2022',
+      to: '2026.2',
+    },
+  ],
+  publications: [],
+  blog: {
+    source: 'dev',
+    username: '',
+    limit: 2,
+  },
+  googleAnalytics: {
+    id: 'G-KB0HCLBJ9M',
+  },
+  hotjar: { id: '', snippetVersion: 6 },
+  themeConfig: {
+    defaultTheme: 'dark',
+    disableSwitch: false,
+    respectPrefersColorScheme: true,
+    displayAvatarRing: true,
+    themes: ['light', 'dark', 'dracula', 'procyon', 'night'],
+  },
+  footer: `Feito com ❤️ por <b>Alisson Pereira</b>`,
+  enablePWA: true,
+};
+
 export default CONFIG;

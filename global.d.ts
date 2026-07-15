@@ -126,3 +126,4 @@ interface Config {
   enablePWA?: boolean;
 }
 declare const CONFIG: Config;
+declare const CONFIG_PTBR: Config;
