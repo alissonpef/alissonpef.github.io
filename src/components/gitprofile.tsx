@@ -3,7 +3,6 @@ import axios, { AxiosError } from 'axios';
 import { formatDistance } from 'date-fns';
 import {
   CustomError,
-  GENERIC_ERROR,
   INVALID_CONFIG_ERROR,
   INVALID_GITHUB_USERNAME_ERROR,
   setTooManyRequestError,
