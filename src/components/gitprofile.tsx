@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useMemo } from 'react';
 import axios, { AxiosError } from 'axios';
 import { formatDistance } from 'date-fns';
 import {
@@ -27,7 +27,7 @@ import BlogCard from './blog-card';
 import Footer from './footer';
 import PublicationCard from './publication-card';
 const GitProfile = ({ config }: { config: Config }) => {
-  const sanitizedConfig = getSanitizedConfig(config);
+  const sanitizedConfig = useMemo(() => getSanitizedConfig(config), [config]);
   const [theme, setTheme] = useState<string>(() =>
     getInitialTheme(sanitizedConfig.themeConfig),
   );
@@ -41,11 +41,15 @@ const GitProfile = ({ config }: { config: Config }) => {
     console.error('Error:', error);
     if (error instanceof AxiosError) {
       try {
-        const reset = formatDistance(
-          new Date(error.response?.headers?.['x-ratelimit-reset'] * 1000),
-          new Date(),
-          { addSuffix: true },
-        );
+        let reset = '';
+        const resetTime = error.response?.headers?.['x-ratelimit-reset'];
+        if (resetTime) {
+          reset = formatDistance(
+            new Date(parseInt(resetTime, 10) * 1000),
+            new Date(),
+            { addSuffix: true },
+          );
+        }
         if (typeof error.response?.status === 'number') {
           switch (error.response.status) {
             case 403:
@@ -55,17 +59,39 @@ const GitProfile = ({ config }: { config: Config }) => {
               setError(INVALID_GITHUB_USERNAME_ERROR);
               break;
             default:
-              setError(GENERIC_ERROR);
+              setError({
+                status: error.response.status,
+                title: 'Oops!! API Error',
+                subTitle: `GitHub API returned ${error.response.status}: ${
+                  error.response.data?.message || error.message
+                }`,
+              });
               break;
           }
         } else {
-          setError(GENERIC_ERROR);
+          setError({
+            status: 500,
+            title: 'Oops!! Network Error',
+            subTitle: error.message || 'Unknown Axios error',
+          });
         }
       } catch {
-        setError(GENERIC_ERROR);
+        if (error.response?.status === 403) {
+          setError(setTooManyRequestError(''));
+        } else {
+          setError({
+            status: 500,
+            title: 'Oops!! Parsing Error',
+            subTitle: error.message || 'Failed to parse error response',
+          });
+        }
       }
     } else {
-      setError(GENERIC_ERROR);
+      setError({
+        status: 500,
+        title: 'Oops!! App Error',
+        subTitle: (error as Error).message || 'Unknown application error',
+      });
     }
   }, []);
   const getGithubProjects = useCallback(

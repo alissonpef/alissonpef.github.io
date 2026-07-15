@@ -148,7 +148,7 @@ const CONFIG = {
   googleAnalytics: {
     id: 'G-KB0HCLBJ9M',
   },
-  hotjar: { id: 'XXXXXXX', snippetVersion: 6 },
+  hotjar: { id: '', snippetVersion: 6 },
   themeConfig: {
     defaultTheme: 'dark',
     disableSwitch: false,
