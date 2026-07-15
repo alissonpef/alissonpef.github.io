@@ -2,6 +2,7 @@ import { RiDice4Line } from 'react-icons/ri';
 import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
 import { LOCAL_STORAGE_KEY_NAME } from '../../constants';
 import { skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 import { MouseEvent } from 'react';
 const ThemeChanger = ({
   theme,
@@ -26,7 +27,7 @@ const ThemeChanger = ({
     setTheme(selectedTheme);
   };
   return (
-    <div className="card overflow-visible shadow-lg card-sm bg-base-100">
+    <div className="card overflow-visible shadow-lg card-sm bg-base-100 z-50">
       <div className="flex-row items-center space-x-4 flex pl-6 pr-2 py-4">
         <div className="flex-1">
           <h5 className="card-title">
@@ -37,14 +38,14 @@ const ThemeChanger = ({
                 className: 'mb-1',
               })
             ) : (
-              <span className="text-base-content opacity-70">Theme</span>
+              <span className="text-base-content opacity-70">{t.theme}</span>
             )}
           </h5>
           <span className="text-base-content/50 capitalize text-sm">
             {loading
               ? skeleton({ widthCls: 'w-16', heightCls: 'h-5' })
               : theme === themeConfig.defaultTheme
-                ? 'Default'
+                ? t.default
                 : theme}
           </span>
         </div>
@@ -80,7 +81,7 @@ const ThemeChanger = ({
                         className={`${theme === item ? 'active' : ''}`}
                       >
                         <span className="opacity-60 capitalize">
-                          {item === themeConfig.defaultTheme ? 'Default' : item}
+                          {item === themeConfig.defaultTheme ? t.default : item}
                         </span>
                       </a>
                     </li>

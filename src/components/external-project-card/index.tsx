@@ -3,6 +3,7 @@ import LazyImage from '../lazy-image';
 import { MdOpenInNew } from 'react-icons/md';
 import { ga, skeleton } from '../../utils';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
+import { t } from '../../utils/i18n';
 const ExternalProjectCard = ({
   externalProjects,
   header,
@@ -145,7 +146,7 @@ const ExternalProjectCard = ({
                   <div className="text-base-content/60 text-xs sm:text-sm mt-1 truncate">
                     {loading
                       ? skeleton({ widthCls: 'w-32', heightCls: 'h-4' })
-                      : `Showcasing ${externalProjects.length} projects`}
+                      : t.showcasingProjects(externalProjects.length)}
                   </div>
                 </div>
               </div>

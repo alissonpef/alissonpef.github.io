@@ -28,6 +28,7 @@ import {
   SanitizedSocial,
 } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 type Props = {
   profile: Profile | null;
   loading: boolean;
@@ -154,14 +155,14 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
               {profile.location && (
                 <ListItem
                   icon={<MdLocationOn />}
-                  title="Based in:"
+                  title={t.basedIn}
                   value={profile.location}
                 />
               )}
               {profile.company && (
                 <OrganizationItem
                   icon={<FaBuilding />}
-                  title="Organization:"
+                  title={t.organization}
                   value={profile.company}
                   link={
                     isCompanyMention(profile.company.trim())
@@ -172,7 +173,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
               )}
               <ListItem
                 icon={<AiFillGithub />}
-                title="GitHub:"
+                title={t.github}
                 value={github.username}
                 link={`https://github.com/${github.username}`}
               />
@@ -203,7 +204,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
               {social?.linkedin && (
                 <ListItem
                   icon={<FaLinkedin />}
-                  title="LinkedIn:"
+                  title={t.linkedin}
                   value={social.linkedin}
                   link={`https://www.linkedin.com/in/${social.linkedin}`}
                 />
@@ -235,7 +236,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
               {social?.instagram && (
                 <ListItem
                   icon={<AiFillInstagram />}
-                  title="Instagram:"
+                  title={t.instagram}
                   value={social.instagram}
                   link={`https://www.instagram.com/${social.instagram}`}
                 />
@@ -299,7 +300,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
               {social?.website && (
                 <ListItem
                   icon={<FaGlobe />}
-                  title="Website:"
+                  title={t.website}
                   value={social.website
                     .replace('https://', '')
                     .replace('http://', '')}
@@ -329,7 +330,7 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
               {social?.email && (
                 <ListItem
                   icon={<RiMailFill />}
-                  title="Email:"
+                  title={t.email}
                   value={social.email}
                   link={`mailto:${social.email}`}
                 />

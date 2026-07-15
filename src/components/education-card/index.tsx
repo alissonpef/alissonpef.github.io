@@ -1,6 +1,7 @@
 import React from 'react';
 import { SanitizedEducation } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 const ListItem = ({
   time,
   degree,
@@ -56,7 +57,9 @@ const EducationCard = ({
             {loading ? (
               skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
             ) : (
-              <span className="text-base-content opacity-70">Education</span>
+              <span className="text-base-content opacity-70">
+                {t.education}
+              </span>
             )}
           </h5>
         </div>

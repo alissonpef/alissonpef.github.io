@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import { AiOutlineFork, AiOutlineStar, AiOutlineGithub } from 'react-icons/ai';
 import { MdInsertLink } from 'react-icons/md';
 import { ga, getLanguageColor, skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 import { GithubProject } from '../../interfaces/github-project';
 const GithubProjectCard = ({
   header,
@@ -160,7 +161,7 @@ const GithubProjectCard = ({
                   <div className="text-base-content/60 text-xs sm:text-sm mt-1 truncate">
                     {loading
                       ? skeleton({ widthCls: 'w-32', heightCls: 'h-4' })
-                      : `Showcasing ${githubProjects.length} featured repositories`}
+                      : t.showcasingFeatured(githubProjects.length)}
                   </div>
                 </div>
               </div>
@@ -176,7 +177,7 @@ const GithubProjectCard = ({
                       : 'btn-ghost bg-base-100 hover:bg-base-300'
                   }`}
                 >
-                  All
+                  {t.all}
                 </button>
                 {languages.map((lang) => (
                   <button

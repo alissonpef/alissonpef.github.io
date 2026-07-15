@@ -5,6 +5,7 @@ import { getDevPost, getMediumPost } from '@arifszn/blog-js';
 import { formatDistance } from 'date-fns';
 import { SanitizedBlog } from '../../interfaces/sanitized-config';
 import { ga, skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 import { Article } from '../../interfaces/article';
 const BlogCard = ({
   loading,
@@ -157,7 +158,7 @@ const BlogCard = ({
       <div className="text-center mb-6">
         <PiNewspaper className="mx-auto h-12 w-12 opacity-30" />
         <p className="mt-1 text-sm opacity-50 text-base-content">
-          No recent post
+          {t.noRecentPost}
         </p>
       </div>
     );
@@ -183,12 +184,12 @@ const BlogCard = ({
                 <h3 className="text-base sm:text-lg font-bold text-base-content truncate">
                   {loading
                     ? skeleton({ widthCls: 'w-28', heightCls: 'h-8' })
-                    : 'My Articles'}
+                    : t.myArticles}
                 </h3>
                 <div className="text-base-content/60 text-xs sm:text-sm mt-1 truncate">
                   {loading
                     ? skeleton({ widthCls: 'w-32', heightCls: 'h-4' })
-                    : 'Recent posts'}
+                    : t.recentPosts}
                 </div>
               </div>
             </div>

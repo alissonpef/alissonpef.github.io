@@ -1,6 +1,7 @@
 import { FALLBACK_IMAGE } from '../../constants';
 import { Profile } from '../../interfaces/profile';
 import { skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 import LazyImage from '../lazy-image';
 interface AvatarCardProps {
   profile: Profile | null;
@@ -79,7 +80,7 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
               download
               rel="noreferrer"
             >
-              Download Resume
+              {t.downloadResume}
             </a>
           ))}
       </div>

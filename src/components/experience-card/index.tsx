@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { SanitizedExperience } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 const ListItem = ({
   time,
   position,
@@ -62,7 +63,9 @@ const ExperienceCard = ({
             {loading ? (
               skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
             ) : (
-              <span className="text-base-content opacity-70">Experience</span>
+              <span className="text-base-content opacity-70">
+                {t.experience}
+              </span>
             )}
           </h5>
         </div>

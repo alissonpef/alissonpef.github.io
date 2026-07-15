@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { SanitizedPublication } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import { t } from '../../utils/i18n';
 const PublicationCard = ({
   publications,
   loading,
@@ -98,7 +99,7 @@ const PublicationCard = ({
                   )}
                   {item.authors && (
                     <p className="text-base-content opacity-50 text-sm">
-                      Author: {item.authors}
+                      {t.author}: {item.authors}
                     </p>
                   )}
                   {item.description && (
@@ -136,12 +137,12 @@ const PublicationCard = ({
                   <h3 className="text-base sm:text-lg font-bold text-base-content truncate">
                     {loading
                       ? skeleton({ widthCls: 'w-40', heightCls: 'h-8' })
-                      : 'Publications'}
+                      : t.publications}
                   </h3>
                   <div className="text-base-content/60 text-xs sm:text-sm mt-1 truncate">
                     {loading
                       ? skeleton({ widthCls: 'w-32', heightCls: 'h-4' })
-                      : `Showcasing ${publications.length} publications`}
+                      : t.showcasingPublications(publications.length)}
                   </div>
                 </div>
               </div>
