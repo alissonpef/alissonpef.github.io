@@ -17,10 +17,10 @@ const CONFIG = {
             'alissonpef/alissonpef.github.io',
             'alissonpef/alissonpef',
             'alissonpef/Curso.dev',
-            'alissonpef/Python_OneBitCode',
             'alissonpef/Backend_OneBitCode',
             'alissonpef/JavaScript_Rocketseat',
-            'alissonpef/Node.JS-Rocketseat',
+            'alissonpef/Python_OneBitCode',
+            'alissonpef/Fullstack_Rocketseat',
           ],
         },
       },
@@ -37,7 +37,7 @@ const CONFIG = {
     title: 'Portfolio of Alisson Pereira Ferreira',
     description:
       'AI & Backend Engineer | Computer Vision | Computer Engineering Student at UFSC',
-    imageURL: '',
+    imageURL: '/logo512.png',
   },
   social: {
     linkedin: 'alisson-pereira-ferreira',
@@ -63,39 +63,49 @@ const CONFIG = {
   },
   resume: {
     fileUrl:
-      'https://drive.google.com/file/d/1ny99c2hPwTGrLy_xW7WNgE9A_5GaI6JQ/view?usp=sharing',
+      '/resume.pdf',
   },
   skills: [
-    'Computer Vision',
-    'MLOps',
-    'LLMs',
-    'Node.js',
-    'TypeScript',
     'Python',
+    'TypeScript',
+    'JavaScript',
+    'PyTorch',
+    'YOLO',
+    'Langchain',
+    'RAG',
+    'Node.js',
     'Express.js',
     'Flask',
-    'OpenCV',
-    'PostgreSQL',
+    'FastAPI',
     'Prisma',
+    'PostgreSQL',
     'Redis',
+    'ChromaDB',
+    'Qdrant',
     'Docker',
     'Git',
-    'GitHub Actions',
-    'Jest',
+    'GitHub',
   ],
   experiences: [
     {
       company: 'Global Drones',
-      position: 'AI & Backend Engineer',
-      from: 'September 2025',
+      position: 'AI & Computer Vision Engineer',
+      from: 'May 2026',
       to: 'Present',
       companyLink: 'https://globaldrones.com.br/',
     },
     {
+      company: 'Global Drones',
+      position: 'Backend & AI Intern',
+      from: 'September 2025',
+      to: 'May 2026',
+      companyLink: 'https://globaldrones.com.br/',
+    },
+    {
       company: 'Quizlet',
-      position: 'Content Contributor',
+      position: 'Content Contributor (Freelance)',
       from: 'June 2024',
-      to: 'August 2025',
+      to: 'July 2025',
       companyLink: 'https://quizlet.com',
     },
     {
@@ -126,7 +136,7 @@ const CONFIG = {
       institution: 'Federal University of Santa Catarina (UFSC)',
       degree: 'B.Sc. Computer Engineering',
       from: '2022',
-      to: '2026 (Estimated)',
+      to: '2026.2',
     },
   ],
   publications: [],
@@ -136,23 +146,17 @@ const CONFIG = {
     limit: 2,
   },
   googleAnalytics: {
-    id: '',
+    id: 'G-KB0HCLBJ9M',
   },
-  hotjar: { id: '', snippetVersion: 6 },
+  hotjar: { id: 'XXXXXXX', snippetVersion: 6 },
   themeConfig: {
     defaultTheme: 'dark',
-
     disableSwitch: false,
-    respectPrefersColorScheme: false,
+    respectPrefersColorScheme: true,
     displayAvatarRing: true,
     themes: ['light', 'dark', 'dracula', 'procyon', 'night'],
   },
-  footer: `Made with <a 
-      class="text-primary" href="https://github.com/alissonpef/alissonpef.github.io"
-      target="_blank"
-      rel="noreferrer"
-    >GitProfile</a> and ❤️`,
+  footer: `Made with ❤️ by <b>Alisson Pereira</b>`,
   enablePWA: true,
 };
-
 export default CONFIG;
