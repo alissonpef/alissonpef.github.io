@@ -58,8 +58,6 @@
 
 ## Sobre O Projeto
 
-[![Captura de Tela do Portfólio][product-screenshot]](https://alissonpef.github.io)
-
 Este é o meu portfólio pessoal e site de currículo construído para centralizar meu perfil profissional. Ele consome dados dinamicamente da API do GitHub para apresentar meus repositórios mais relevantes, além de exibir minhas experiências profissionais e acadêmicas, certificações e publicações em uma interface moderna e responsiva de forma totalmente automatizada.
 
 Principais recursos:
