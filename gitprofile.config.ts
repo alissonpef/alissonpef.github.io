@@ -62,8 +62,7 @@ const CONFIG = {
     email: 'alissonpef@gmail.com',
   },
   resume: {
-    fileUrl:
-      '/resume.pdf',
+    fileUrl: '/resume.pdf',
   },
   skills: [
     'Python',
