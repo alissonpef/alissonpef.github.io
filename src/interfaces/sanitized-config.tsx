@@ -1,7 +1,6 @@
 export interface SanitizedGithub {
   username: string;
 }
-
 export interface SanitizedGitHubProjects {
   display: boolean;
   header: string;
@@ -18,30 +17,25 @@ export interface SanitizedGitHubProjects {
     projects: Array<string>;
   };
 }
-
 export interface SanitizedExternalProject {
   title: string;
   description?: string;
   imageUrl?: string;
   link: string;
 }
-
 export interface SanitizedExternalProjects {
   header: string;
   projects: SanitizedExternalProject[];
 }
-
 export interface SanitizedProjects {
   github: SanitizedGitHubProjects;
   external: SanitizedExternalProjects;
 }
-
 export interface SanitizedSEO {
   title?: string;
   description?: string;
   imageURL?: string;
 }
-
 export interface SanitizedSocial {
   linkedin?: string;
   x?: string;
@@ -64,11 +58,9 @@ export interface SanitizedSocial {
   email?: string;
   discord?: string;
 }
-
 export interface SanitizedResume {
   fileUrl?: string;
 }
-
 export interface SanitizedExperience {
   company?: string;
   position?: string;
@@ -76,21 +68,18 @@ export interface SanitizedExperience {
   to: string;
   companyLink?: string;
 }
-
 export interface SanitizedCertification {
   body?: string;
   name?: string;
   year?: string;
   link?: string;
 }
-
 export interface SanitizedEducation {
   institution?: string;
   degree?: string;
   from: string;
   to: string;
 }
-
 export interface SanitizedPublication {
   title: string;
   conferenceName?: string;
@@ -99,23 +88,19 @@ export interface SanitizedPublication {
   link?: string;
   description?: string;
 }
-
 export interface SanitizedGoogleAnalytics {
   id?: string;
 }
-
 export interface SanitizedHotjar {
   id?: string;
   snippetVersion: number;
 }
-
 export interface SanitizedBlog {
   display: boolean;
   source: string;
   username: string;
   limit: number;
 }
-
 export interface SanitizedThemeConfig {
   defaultTheme: string;
   disableSwitch: boolean;
@@ -123,7 +108,6 @@ export interface SanitizedThemeConfig {
   displayAvatarRing: boolean;
   themes: Array<string>;
 }
-
 export interface SanitizedConfig {
   github: SanitizedGithub;
   projects: SanitizedProjects;

@@ -3,7 +3,6 @@ import { AiOutlineFork, AiOutlineStar, AiOutlineGithub } from 'react-icons/ai';
 import { MdInsertLink } from 'react-icons/md';
 import { ga, getLanguageColor, skeleton } from '../../utils';
 import { GithubProject } from '../../interfaces/github-project';
-
 const GithubProjectCard = ({
   header,
   githubProjects,
@@ -18,22 +17,19 @@ const GithubProjectCard = ({
   googleAnalyticsId?: string;
 }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
-
   if (!loading && githubProjects.length === 0) {
     return;
   }
-
-    const languages = [
-    ...new Set(githubProjects.map((project) => project.language).filter(Boolean)),
+  const languages = [
+    ...new Set(
+      githubProjects.map((project) => project.language).filter(Boolean),
+    ),
   ];
-
   const getLanguageCount = (lang: string) =>
     githubProjects.filter((project) => project.language === lang).length;
-
   const filteredProjects = selectedLanguage
     ? githubProjects.filter((project) => project.language === selectedLanguage)
     : githubProjects;
-
   const renderSkeleton = () => {
     const array = [];
     for (let index = 0; index < limit; index++) {
@@ -80,10 +76,8 @@ const GithubProjectCard = ({
         </div>,
       );
     }
-
     return array;
   };
-
   const renderProjects = () => {
     return filteredProjects.map((item, index) => (
       <a
@@ -92,7 +86,6 @@ const GithubProjectCard = ({
         key={index}
         onClick={(e) => {
           e.preventDefault();
-
           try {
             if (googleAnalyticsId) {
               ga.event('Click project', { project: item.name });
@@ -100,7 +93,6 @@ const GithubProjectCard = ({
           } catch (error) {
             console.error(error);
           }
-
           window?.open(item.html_url, '_blank');
         }}
       >
@@ -141,13 +133,11 @@ const GithubProjectCard = ({
       </a>
     ));
   };
-
   return (
     <Fragment>
       <div className="col-span-1 lg:col-span-2">
         <div className="card bg-base-200 shadow-xl border border-base-300">
           <div className="card-body p-8">
-            {/* Enhanced Header Section */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
               <div className="flex items-center space-x-3">
                 {loading ? (
@@ -176,7 +166,6 @@ const GithubProjectCard = ({
               </div>
             </div>
 
-            {/* Language Filter */}
             {!loading && languages.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
                 <button
@@ -212,7 +201,6 @@ const GithubProjectCard = ({
               </div>
             )}
 
-            {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {loading ? renderSkeleton() : renderProjects()}
             </div>
@@ -222,5 +210,4 @@ const GithubProjectCard = ({
     </Fragment>
   );
 };
-
 export default GithubProjectCard;

@@ -1,5 +1,4 @@
 import { skeleton } from '../../utils';
-
 const Footer = ({
   content,
   loading,
@@ -8,7 +7,6 @@ const Footer = ({
   loading: boolean;
 }) => {
   if (!content) return null;
-
   return (
     <div className="card-body">
       {loading ? (
@@ -19,5 +17,4 @@ const Footer = ({
     </div>
   );
 };
-
 export default Footer;

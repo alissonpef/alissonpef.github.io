@@ -1,7 +1,6 @@
 import React from 'react';
 import { hotjar } from 'react-hotjar';
 import { LOCAL_STORAGE_KEY_NAME } from '../constants';
-
 import { DEFAULT_THEMES } from '../constants/default-themes';
 import colors from '../data/colors.json';
 import {
@@ -9,21 +8,20 @@ import {
   SanitizedHotjar,
   SanitizedThemeConfig,
 } from '../interfaces/sanitized-config';
-
 export const isDarkishTheme = (appliedTheme: string): boolean => {
   return ['dark', 'halloween', 'forest', 'black', 'luxury', 'dracula'].includes(
     appliedTheme,
   );
 };
-
 type EventParams = {
   [key: string]: string;
 };
-
 type Colors = {
-  [key: string]: { color: string | null; url: string };
+  [key: string]: {
+    color: string | null;
+    url: string;
+  };
 };
-
 export const getSanitizedConfig = (
   config: Config,
 ): SanitizedConfig | Record<string, never> => {
@@ -129,37 +127,31 @@ export const getSanitizedConfig = (
       footer: config?.footer,
       enablePWA: config?.enablePWA ?? true,
     };
-  } catch (error) {
+  } catch {
     return {};
   }
 };
-
 export const getInitialTheme = (themeConfig: SanitizedThemeConfig): string => {
   if (themeConfig.disableSwitch) {
     return themeConfig.defaultTheme;
   }
-
   if (
     typeof window !== 'undefined' &&
     !(localStorage.getItem(LOCAL_STORAGE_KEY_NAME) === null)
   ) {
     const savedTheme = localStorage.getItem(LOCAL_STORAGE_KEY_NAME);
-
     if (savedTheme && themeConfig.themes.includes(savedTheme)) {
       return savedTheme;
     }
   }
-
   if (themeConfig.respectPrefersColorScheme && !themeConfig.disableSwitch) {
     return typeof window !== 'undefined' &&
       window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
       : themeConfig.defaultTheme;
   }
-
   return themeConfig.defaultTheme;
 };
-
 export const skeleton = ({
   widthCls = null,
   heightCls = null,
@@ -183,28 +175,27 @@ export const skeleton = ({
   if (heightCls) {
     classNames.push(heightCls);
   }
-
   return <div className={classNames.join(' ')} style={style} />;
 };
-
 export const setupHotjar = (hotjarConfig: SanitizedHotjar): void => {
   if (hotjarConfig?.id) {
     const snippetVersion = hotjarConfig?.snippetVersion || 6;
     hotjar.initialize({ id: parseInt(hotjarConfig.id), sv: snippetVersion });
   }
 };
-
 export const ga = {
   event(action: string, params: EventParams): void {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any)?.gtag('event', action, params);
+      (
+        window as unknown as {
+          gtag?: (event: string, action: string, params: EventParams) => void;
+        }
+      )?.gtag?.('event', action, params);
     } catch (error) {
       console.error(error);
     }
   },
 };
-
 export const getLanguageColor = (language: string): string => {
   const languageColors: Colors = colors;
   if (typeof languageColors[language] !== 'undefined') {

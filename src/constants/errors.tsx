@@ -1,11 +1,9 @@
 import { ReactElement } from 'react';
-
 export interface CustomError {
   status: number;
   title: string;
   subTitle: string | ReactElement;
 }
-
 export const INVALID_CONFIG_ERROR: CustomError = {
   status: 500,
   title: 'Invalid Config!',
@@ -15,7 +13,6 @@ export const INVALID_CONFIG_ERROR: CustomError = {
     </p>
   ),
 };
-
 export const setTooManyRequestError = (resetTime: string): CustomError => {
   return {
     status: 429,
@@ -36,7 +33,6 @@ export const setTooManyRequestError = (resetTime: string): CustomError => {
     ),
   };
 };
-
 export const INVALID_GITHUB_USERNAME_ERROR: CustomError = {
   status: 404,
   title: 'Invalid GitHub Username!',
@@ -47,7 +43,6 @@ export const INVALID_GITHUB_USERNAME_ERROR: CustomError = {
     </p>
   ),
 };
-
 export const GENERIC_ERROR: CustomError = {
   status: 500,
   title: 'Oops!!',

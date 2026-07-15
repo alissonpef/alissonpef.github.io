@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { SanitizedExperience } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-
 const ListItem = ({
   time,
   position,
@@ -27,7 +26,6 @@ const ListItem = ({
     </div>
   </li>
 );
-
 const ExperienceCard = ({
   experiences,
   loading,
@@ -54,7 +52,6 @@ const ExperienceCard = ({
         />,
       );
     }
-
     return array;
   };
   return (
@@ -96,5 +93,4 @@ const ExperienceCard = ({
     </div>
   );
 };
-
 export default ExperienceCard;

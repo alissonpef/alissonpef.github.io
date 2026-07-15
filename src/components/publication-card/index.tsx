@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { AiOutlineBook } from 'react-icons/ai';
 import { SanitizedPublication } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-
 const PublicationCard = ({
   publications,
   loading,
@@ -70,10 +69,8 @@ const PublicationCard = ({
         </div>,
       );
     }
-
     return array;
   };
-
   const renderPublications = () => {
     return publications.map((item, index) => (
       <a
@@ -117,7 +114,6 @@ const PublicationCard = ({
       </a>
     ));
   };
-
   return (
     <Fragment>
       <div className="col-span-1 lg:col-span-2">
@@ -159,5 +155,4 @@ const PublicationCard = ({
     </Fragment>
   );
 };
-
 export default PublicationCard;

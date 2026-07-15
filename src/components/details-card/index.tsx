@@ -28,35 +28,29 @@ import {
   SanitizedSocial,
 } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-
 type Props = {
   profile: Profile | null;
   loading: boolean;
   social: SanitizedSocial;
   github: SanitizedGithub;
 };
-
 const isCompanyMention = (company: string): boolean => {
   return company.startsWith('@') && !company.includes(' ');
 };
-
 const companyLink = (company: string): string => {
   return `https://github.com/${company.substring(1)}`;
 };
-
 const getFormattedMastodonValue = (
   mastodonValue: string,
   isLink: boolean,
 ): string => {
   const [username, server] = mastodonValue.split('@');
-
   if (isLink) {
     return `https://${server}/@${username}`;
   } else {
     return `${username}@${server}`;
   }
 };
-
 const ListItem: React.FC<{
   icon: React.ReactNode;
   title: React.ReactNode;
@@ -70,9 +64,7 @@ const ListItem: React.FC<{
         {icon} {title}
       </div>
       <div
-        className={`${
-          skeleton ? 'grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}
+        className={`${skeleton ? 'grow' : ''} text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -89,7 +81,6 @@ const ListItem: React.FC<{
     </div>
   );
 };
-
 const OrganizationItem: React.FC<{
   icon: React.ReactNode;
   title: React.ReactNode;
@@ -102,7 +93,6 @@ const OrganizationItem: React.FC<{
       return value.split(' ').map((company) => {
         company = company.trim();
         if (!company) return null;
-
         if (isCompanyMention(company)) {
           return (
             <a
@@ -121,16 +111,13 @@ const OrganizationItem: React.FC<{
     }
     return value;
   };
-
   return (
     <div className="flex justify-start py-2 px-1 items-center">
       <div className="grow font-medium gap-2 flex items-center my-1">
         {icon} {title}
       </div>
       <div
-        className={`${
-          skeleton ? 'grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 space-x-2 ${link ? 'truncate' : ''}`}
+        className={`${skeleton ? 'grow' : ''} text-sm font-normal text-right mr-2 ml-3 space-x-2 ${link ? 'truncate' : ''}`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -140,16 +127,6 @@ const OrganizationItem: React.FC<{
     </div>
   );
 };
-
-/**
- * Renders the details card component.
- *
- * @param {Object} profile - The profile object.
- * @param {boolean} loading - Indicates whether the data is loading.
- * @param {Object} social - The social object.
- * @param {Object} github - The GitHub object.
- * @return {JSX.Element} The details card component.
- */
 const DetailsCard = ({ profile, loading, social, github }: Props) => {
   const renderSkeleton = () => {
     const array = [];
@@ -164,10 +141,8 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
         />,
       );
     }
-
     return array;
   };
-
   return (
     <div className="card shadow-lg card-sm bg-base-100">
       <div className="card-body">
@@ -374,5 +349,4 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
     </div>
   );
 };
-
 export default DetailsCard;

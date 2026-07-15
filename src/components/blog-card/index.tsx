@@ -6,7 +6,6 @@ import { formatDistance } from 'date-fns';
 import { SanitizedBlog } from '../../interfaces/sanitized-config';
 import { ga, skeleton } from '../../utils';
 import { Article } from '../../interfaces/article';
-
 const BlogCard = ({
   loading,
   blog,
@@ -17,7 +16,6 @@ const BlogCard = ({
   googleAnalyticsId?: string;
 }) => {
   const [articles, setArticles] = useState<Article[]>([]);
-
   useEffect(() => {
     if (blog.source === 'medium') {
       getMediumPost({
@@ -33,7 +31,6 @@ const BlogCard = ({
       });
     }
   }, [blog.source, blog.username]);
-
   const renderSkeleton = () => {
     const array = [];
     for (let index = 0; index < blog.limit; index++) {
@@ -87,10 +84,8 @@ const BlogCard = ({
         </div>,
       );
     }
-
     return array;
   };
-
   const renderArticles = () => {
     return articles && articles.length ? (
       articles.slice(0, blog.limit).map((article, index) => (
@@ -100,7 +95,6 @@ const BlogCard = ({
           href={article.link}
           onClick={(e) => {
             e.preventDefault();
-
             try {
               if (googleAnalyticsId) {
                 ga.event('Click Blog Post', {
@@ -110,7 +104,6 @@ const BlogCard = ({
             } catch (error) {
               console.error(error);
             }
-
             window?.open(article.link, '_blank');
           }}
         >
@@ -169,7 +162,6 @@ const BlogCard = ({
       </div>
     );
   };
-
   return (
     <div className="col-span-1 lg:col-span-2">
       <div className="card bg-base-200 shadow-xl border border-base-300">
@@ -209,5 +201,4 @@ const BlogCard = ({
     </div>
   );
 };
-
 export default BlogCard;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { SanitizedEducation } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-
 const ListItem = ({
   time,
   degree,
@@ -21,7 +20,6 @@ const ListItem = ({
     <div className="mb-4 font-normal">{institution}</div>
   </li>
 );
-
 const EducationCard = ({
   loading,
   educations,
@@ -48,10 +46,8 @@ const EducationCard = ({
         />,
       );
     }
-
     return array;
   };
-
   return (
     <div className="card shadow-lg card-sm bg-base-100">
       <div className="card-body">
@@ -86,5 +82,4 @@ const EducationCard = ({
     </div>
   );
 };
-
 export default EducationCard;

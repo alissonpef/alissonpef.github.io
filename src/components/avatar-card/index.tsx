@@ -2,22 +2,12 @@ import { FALLBACK_IMAGE } from '../../constants';
 import { Profile } from '../../interfaces/profile';
 import { skeleton } from '../../utils';
 import LazyImage from '../lazy-image';
-
 interface AvatarCardProps {
   profile: Profile | null;
   loading: boolean;
   avatarRing: boolean;
   resumeFileUrl?: string;
 }
-
-/**
- * Renders an AvatarCard component.
- * @param profile - The profile object.
- * @param loading - A boolean indicating if the profile is loading.
- * @param avatarRing - A boolean indicating if the avatar should have a ring.
- * @param resumeFileUrl - The URL of the resume file.
- * @returns JSX element representing the AvatarCard.
- */
 const AvatarCard: React.FC<AvatarCardProps> = ({
   profile,
   loading,
@@ -96,5 +86,4 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
     </div>
   );
 };
-
 export default AvatarCard;

@@ -3,17 +3,6 @@ import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
 import { LOCAL_STORAGE_KEY_NAME } from '../../constants';
 import { skeleton } from '../../utils';
 import { MouseEvent } from 'react';
-
-/**
- * Renders a theme changer component.
- *
- * @param {Object} props - The props object.
- * @param {string} props.theme - The current theme.
- * @param {function} props.setTheme - A function to set the theme.
- * @param {boolean} props.loading - Whether the component is in a loading state.
- * @param {SanitizedThemeConfig} props.themeConfig - The theme configuration object.
- * @return {JSX.Element} The rendered theme changer component.
- */
 const ThemeChanger = ({
   theme,
   setTheme,
@@ -30,15 +19,12 @@ const ThemeChanger = ({
     selectedTheme: string,
   ) => {
     e.preventDefault();
-
     document.querySelector('html')?.setAttribute('data-theme', selectedTheme);
-
-    typeof window !== 'undefined' &&
+    if (typeof window !== 'undefined') {
       localStorage.setItem(LOCAL_STORAGE_KEY_NAME, selectedTheme);
-
+    }
     setTheme(selectedTheme);
   };
-
   return (
     <div className="card overflow-visible shadow-lg card-sm bg-base-100">
       <div className="flex-row items-center space-x-4 flex pl-6 pr-2 py-4">
@@ -89,7 +75,6 @@ const ThemeChanger = ({
                     ),
                   ].map((item, index) => (
                     <li key={index}>
-                      {}
                       <a
                         onClick={(e) => changeTheme(e, item)}
                         className={`${theme === item ? 'active' : ''}`}
@@ -109,5 +94,4 @@ const ThemeChanger = ({
     </div>
   );
 };
-
 export default ThemeChanger;

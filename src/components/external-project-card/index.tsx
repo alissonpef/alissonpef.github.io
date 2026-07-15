@@ -3,7 +3,6 @@ import LazyImage from '../lazy-image';
 import { MdOpenInNew } from 'react-icons/md';
 import { ga, skeleton } from '../../utils';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
-
 const ExternalProjectCard = ({
   externalProjects,
   header,
@@ -63,10 +62,8 @@ const ExternalProjectCard = ({
         </div>,
       );
     }
-
     return array;
   };
-
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
       <a
@@ -75,7 +72,6 @@ const ExternalProjectCard = ({
         href={item.link}
         onClick={(e) => {
           e.preventDefault();
-
           try {
             if (googleAnalyticId) {
               ga.event('Click External Project', {
@@ -85,7 +81,6 @@ const ExternalProjectCard = ({
           } catch (error) {
             console.error(error);
           }
-
           window?.open(item.link, '_blank');
         }}
       >
@@ -123,7 +118,6 @@ const ExternalProjectCard = ({
       </a>
     ));
   };
-
   return (
     <Fragment>
       <div className="col-span-1 lg:col-span-2">
@@ -165,5 +159,4 @@ const ExternalProjectCard = ({
     </Fragment>
   );
 };
-
 export default ExternalProjectCard;

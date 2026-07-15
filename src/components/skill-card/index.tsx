@@ -1,5 +1,4 @@
 import { skeleton } from '../../utils';
-
 const SkillCard = ({
   loading,
   skills,
@@ -16,10 +15,8 @@ const SkillCard = ({
         </div>,
       );
     }
-
     return array;
   };
-
   return (
     <div className="card shadow-lg card-sm bg-base-100">
       <div className="card-body">
@@ -47,5 +44,4 @@ const SkillCard = ({
     </div>
   );
 };
-
 export default SkillCard;

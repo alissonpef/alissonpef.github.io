@@ -1,7 +1,6 @@
 import React from 'react';
 import { SanitizedCertification } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
-
 const ListItem = ({
   year,
   name,
@@ -27,7 +26,6 @@ const ListItem = ({
     <h3 className="mb-4 font-normal">{body}</h3>
   </li>
 );
-
 const CertificationCard = ({
   certifications,
   loading,
@@ -54,10 +52,8 @@ const CertificationCard = ({
         />,
       );
     }
-
     return array;
   };
-
   return (
     <div className="card shadow-lg card-sm bg-base-100">
       <div className="card-body">
@@ -95,5 +91,4 @@ const CertificationCard = ({
     </div>
   );
 };
-
 export default CertificationCard;
