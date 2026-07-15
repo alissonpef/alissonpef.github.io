@@ -2,7 +2,7 @@ import { RiDice4Line } from 'react-icons/ri';
 import { SanitizedThemeConfig } from '../../interfaces/sanitized-config';
 import { LOCAL_STORAGE_KEY_NAME } from '../../constants';
 import { skeleton } from '../../utils';
-import { t } from '../../utils/i18n';
+import { getLanguage, t } from '../../utils/i18n';
 import { MouseEvent } from 'react';
 const ThemeChanger = ({
   theme,
@@ -49,7 +49,34 @@ const ThemeChanger = ({
                 : theme}
           </span>
         </div>
-        <div className="flex-0">
+        <div className="flex-0 flex items-center gap-2">
+          {!loading && (
+            <div className="flex items-center gap-2 mr-2">
+              {getLanguage() === 'pt' ? (
+                <button
+                  onClick={() => {
+                    localStorage.setItem('language', 'en');
+                    window.location.reload();
+                  }}
+                  className="text-2xl transition-opacity cursor-pointer hover:opacity-80"
+                  title="Switch to English"
+                >
+                  🇺🇸
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    localStorage.setItem('language', 'pt');
+                    window.location.reload();
+                  }}
+                  className="text-2xl transition-opacity cursor-pointer hover:opacity-80"
+                  title="Mudar para Português"
+                >
+                  🇧🇷
+                </button>
+              )}
+            </div>
+          )}
           {loading ? (
             skeleton({
               widthCls: 'w-12',

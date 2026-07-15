@@ -1,8 +1,8 @@
 export const getLanguage = () => {
-  const userLang =
-    navigator.language ||
-    (navigator as Navigator & { userLanguage?: string }).userLanguage;
-  return userLang && userLang.toLowerCase().includes('pt') ? 'pt' : 'en';
+  if (typeof window === 'undefined') return 'en';
+  const storedLang = localStorage.getItem('language');
+  if (storedLang) return storedLang === 'pt' ? 'pt' : 'en';
+  return 'en';
 };
 
 export const t = {
